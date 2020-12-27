@@ -3,14 +3,31 @@ function setup() {
   theta=0.0;
   points=[];
   svg=apple_svg
-  for(i=0;i<svg.length;i++)
-  {
-    const pt=new Complex(svg[i][0],svg[i][1]);
-    points.push(pt);
-  }
-  fourier=dft(points);
-  xpbuffer=[];
-  ypbuffer=[];
+  // scalefactor=2000/windowWidth;
+  // if(scalefactor>1.5)
+  // {
+  // scalevalue=scalefactor;
+  // }
+  // else {
+  //   scalevalue=1;
+  // }
+  // if(svg.length>1500){
+  //   svg1=[];
+  //   for(k=0;k<svg.length;k+=2)
+  //   {
+  //     svg1.push(svg[k]);
+  //   }
+  //   svg=svg1;
+  // }
+  // for(i=0;i<svg.length;i++)
+  // {
+  //   const pt=new Complex(svg[i][0]/scalevalue,svg[i][1]/scalevalue);
+  //   points.push(pt);
+  // }
+  // fourier=dft(points);
+  // xpbuffer=[];
+  // ypbuffer=[];
+  setup_refresh();
 
   sel = createSelect();
   sel.position(10, 10);
@@ -22,6 +39,36 @@ function setup() {
   sel.option('bjp');
   sel.option('nasa');
   sel.changed(mySelectEvent);
+}
+
+function setup_refresh()
+{
+  points=[];
+  scalefactor=2000/windowWidth;
+  if(scalefactor>1.5)
+  {
+  scalevalue=scalefactor;
+  }
+  else {
+    scalevalue=1;
+  }
+  if(svg.length>1500){
+    svg1=[];
+    for(k=0;k<svg.length;k+=2)
+    {
+      svg1.push(svg[k]);
+    }
+    svg=svg1;
+  }
+  for(i=0;i<svg.length;i++)
+  {
+    const pt=new Complex(svg[i][0]/scalevalue,svg[i][1]/scalevalue);
+    points.push(pt);
+  }
+  fourier=dft(points);
+  xpbuffer=[];
+  ypbuffer=[];
+  theta=0;
 }
 
 function mySelectEvent()
@@ -56,22 +103,40 @@ function mySelectEvent()
   {
     svg=nasa_svg;
   }
-  for(i=0;i<svg.length;i++)
-  {
-    const pt=new Complex(svg[i][0],svg[i][1]);
-    points.push(pt);
-  }
-  fourier=dft(points);
-  theta=0.0;
-  xpbuffer=[];
-  ypbuffer=[];
+  // scalefactor=2000/windowWidth;
+  // if(scalefactor>1.5)
+  // {
+  // scalevalue=scalefactor;
+  // }
+  // else {
+  //   scalevalue=1;
+  // }
+  // if(svg.length>1500){
+  //   svg1=[];
+  //   for(k=0;k<svg.length;k+=2)
+  //   {
+  //     svg1.push(svg[k]);
+  //   }
+  //   svg=svg1;
+  // }
+  // for(i=0;i<svg.length;i++)
+  // {
+  //   const pt=new Complex(svg[i][0]/scalevalue,svg[i][1]/scalevalue);
+  //   points.push(pt);
+  // }
+  // fourier=dft(points);
+  // theta=0.0;
+  // xpbuffer=[];
+  // ypbuffer=[];
+  setup_refresh();
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  theta=0.0;
-  xpbuffer=[];
-  ypbuffer=[];
+  // theta=0.0;
+  // xpbuffer=[];
+  // ypbuffer=[];
+  setup_refresh();
 }
 
 function show_buffer()
