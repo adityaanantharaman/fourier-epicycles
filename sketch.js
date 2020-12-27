@@ -44,7 +44,7 @@ function setup() {
 function setup_refresh()
 {
   points=[];
-  scalefactor=2000/windowWidth;
+  scalefactor=1200/windowWidth;
   if(scalefactor>1.5)
   {
   scalevalue=scalefactor;
@@ -52,7 +52,7 @@ function setup_refresh()
   else {
     scalevalue=1;
   }
-  if(svg.length>1500){
+  if(svg.length>1000){
     svg1=[];
     for(k=0;k<svg.length;k+=2)
     {
