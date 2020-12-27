@@ -1,3 +1,4 @@
+var button;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   theta=0.0;
@@ -6,8 +7,12 @@ function setup() {
 
   setup_refresh();
 
+  button = createButton('GO TO GITHUB');
+	button.position(20, 20);
+	button.mousePressed(gotolink);
+
   sel = createSelect();
-  sel.position(10, 10);
+  sel.position(20, 50);
   sel.option('apple');
   sel.option('car');
   sel.option('aditya');
@@ -16,6 +21,10 @@ function setup() {
   sel.option('bjp');
   sel.option('nasa');
   sel.changed(mySelectEvent);
+}
+
+function gotolink() {
+	window.open('https://github.com/adityaanantharaman/fourier-epicycles');
 }
 
 function setup_refresh()
